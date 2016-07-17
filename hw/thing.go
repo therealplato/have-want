@@ -16,30 +16,30 @@ type Thing interface {
 
 // MockThing is an in-memory development implementation of Thing
 type MockThing struct {
-	title    string
-	desc     string
-	digital  bool
-	tangible bool
+	Title_   string
+	Desc_    string
+	Digital  bool
+	Tangible bool
 }
 
 // Title returns a short title of the thing suitable for listing on a h/w board
 func (t *MockThing) Title() string {
-	return t.title
+	return t.Title_
 }
 
 // Description contains details about the thing
 func (t *MockThing) Description() string {
-	return t.desc
+	return t.Desc_
 }
 
 // IsTangible returns true if the thing can be physically touched
 func (t *MockThing) IsTangible() bool {
-	return t.tangible
+	return t.Tangible
 }
 
 // IsDigital returns true if the thing can be represented by bits
 func (t *MockThing) IsDigital() bool {
-	return t.digital
+	return t.Digital
 }
 
 // Equal returns true if thing t is the same as thing x
@@ -51,12 +51,12 @@ func (t *MockThing) Equal(x Thing) bool {
 
 func (t *MockThing) String() string {
 	var tmp string
-	if t.digital {
+	if t.Digital {
 		tmp = "Digital"
-	} else if t.tangible {
+	} else if t.Tangible {
 		tmp = "Tangible"
 	} else {
 		tmp = "Abstract"
 	}
-	return fmt.Sprintf("%s %s:\n%s", tmp, t.Description())
+	return fmt.Sprintf("%s %s:\n%s", tmp, t.Title(), t.Description())
 }

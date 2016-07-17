@@ -6,6 +6,6 @@ import (
 )
 
 func TestW(t *testing.T) {
-	W()
+	// W()
 	fmt.Println("vim-go")
 }

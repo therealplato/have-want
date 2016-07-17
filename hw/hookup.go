@@ -9,9 +9,9 @@ And that file becomes the active buffer`
 
 // Hookup returns things that a wants and b has,and vice versa
 func Hookup(a, b Person) []Thing {
-	common := []Thing{}
 	h1, w1 := a.List()
 	h2, w2 := b.List()
+	common := []Thing{}
 	for _, need := range w1 {
 		for _, offer := range h2 {
 			if offer.Equal(need) {

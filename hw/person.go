@@ -8,38 +8,17 @@ type Person interface {
 	IWant(Thing)
 	// DoIWant(Thing) bool
 	// DoIHave(Thing) bool
-	List() ([]Thing, []Thing)
+	Board() Board
 }
 
 // MockPerson is an in-memory implementation of Person
 type MockPerson struct {
 	Name  string
 	ID    id.Email
-	haves []Thing
-	wants []Thing
+	board Board
 }
 
-// IHave adds t to p's have list
-func (p *MockPerson) IHave(t Thing) {
-	for _, i := range p.haves {
-		if i.Equal(t) {
-			return
-		}
-	}
-	p.haves = append(p.haves, t)
-}
-
-// IWant adds t to p's want list
-func (p *MockPerson) IWant(t Thing) {
-	for _, i := range p.wants {
-		if i.Equal(t) {
-			return
-		}
-	}
-	p.wants = append(p.wants, t)
-}
-
-// List returns p's haves and wants
-func (p *MockPerson) List() (haves, wants []Thing) {
-	return p.haves, p.wants
+// Board retrieves this persons have want board
+func (p *MockPerson) Board() Board {
+	return p.board
 }
